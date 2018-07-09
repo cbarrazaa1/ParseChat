@@ -11,5 +11,5 @@
 @interface ChatMessageCell : UITableViewCell
 // Instance Methods
 - (void)setMessage:(NSString*)message username:(NSString*)username;
-
+- (void)setAvatarWithUsername:(NSString*)urlString;
 @end

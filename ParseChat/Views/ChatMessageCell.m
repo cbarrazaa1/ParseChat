@@ -7,6 +7,7 @@
 //
 
 #import "ChatMessageCell.h"
+#import "UIImageView+AFNetworking.h"
 
 @interface ChatMessageCell ()
 // Outlet Definitions
@@ -23,6 +24,8 @@
     // set rounded corners
     self.bubbleImage.layer.cornerRadius = 16;
     self.bubbleImage.clipsToBounds = YES;
+    self.avatarImage.layer.cornerRadius = 20;
+    self.avatarImage.clipsToBounds = YES;
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
@@ -32,5 +35,11 @@
 - (void)setMessage:(NSString*)message username:(NSString*)username {
     self.messageLabel.text = message;
     self.usernameLabel.text = username;
+}
+
+- (void)setAvatarWithUsername:(NSString*)username {
+    NSString* actualURL = [[@"https://api.adorable.io/avatars/50/" stringByAppendingString:username] stringByAppendingString:@"@adorable.io.png"];
+    NSURL* url = [NSURL URLWithString:actualURL];
+    [self.avatarImage setImageWithURL:url];
 }
 @end

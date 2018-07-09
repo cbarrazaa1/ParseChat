@@ -29,7 +29,8 @@
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
-
+    self.tableView.rowHeight = UITableViewAutomaticDimension;
+    
     // get messages
     [self.activityIndicator startAnimating];
     [self refreshMessages];
@@ -90,8 +91,9 @@
     {
         // get user
         PFUser* user = message[@"user"];
-        NSString* username = (user != nil) ? user.username : @"No username";
+        NSString* username = (user != nil) ? user.username : @"Unknown";
         [cell setMessage:message[@"text"] username:username];
+        [cell setAvatarWithUsername:username];
     }
     
     return cell;
